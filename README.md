@@ -163,6 +163,8 @@ Otherwise returns `Boolean(value)`.
 ```typescript
 all<T>(array: T[], fn: (value: T) => boolean = Boolean): boolean
 ```
+Firstly, it flattens the given *array*.
+
 For each item in *array*, it calls *fn* and passes the item.
 
 It counts the times *fn* returns either `true` or `false`.
@@ -173,6 +175,8 @@ At the end, it returns `true` only if *fn* returned `true` for all items. Otherw
 ```typescript
 most<T>(array: T[], fn: (value: T) => boolean = Boolean): boolean
 ```
+Firstly, it flattens the given *array*.
+
 For each item in *array*, it calls *fn* and passes the item.
 
 It counts the times *fn* returns either `true` or `false`.
@@ -183,6 +187,8 @@ At the end, it returns `true` only if *fn* returned `true` for at least 50% of a
 ```typescript
 any<T>(array: T[], fn: (value: T) => boolean = Boolean): boolean
 ```
+Firstly, it flattens the given *array*.
+
 For each item in *array*, it calls *fn* and passes the item.
 
 It counts the times *fn* returns either `true` or `false`.
@@ -193,6 +199,8 @@ At the end, it returns `true` if *fn* returned `true` for at least 1 item. Other
 ```typescript
 none<T>(array: T[], fn: (value: T) => boolean = Boolean): boolean
 ```
+Firstly, it flattens the given *array*.
+
 For each item in *array*, it calls *fn* and passes the item.
 
 It counts the times *fn* returns either `true` or `false`.
@@ -203,6 +211,8 @@ At the end, it returns `true` only if *fn* returned `false` for all items. Other
 ```typescript
 some<T>(array: T[], threshold: number, fn: (value: T) => boolean = Boolean): boolean
 ```
+Firstly, it flattens the given *array*.
+
 For each item in *array*, it calls *fn* and passes the item.
 
 It counts the times *fn* returns either `true` or `false`.
