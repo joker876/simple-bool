@@ -1,0 +1,42 @@
+{
+  "name": "simple-bool",
+  "version": "1.0.0",
+  "description": "A simple set of functions that return a boolean.",
+  "main": "dist/index.min.js",
+  "files": [
+    "dist/*"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "nodemon dist/index.min.js",
+    "tstest": "ts-node-dev --respawn src/index.ts",
+    "build": "rmdir /s /Q dist & tsc && terser dist/index.js --output dist/index.min.js --config_file terserconfig.json --comments /^\\*\\n/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joker876/simple-bool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joker876/simple-bool/issues"
+  },
+  "homepage": "https://github.com/joker876/simple-bool#readme",
+  "author": "joker876",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  },
+  "keywords": [
+    "bool",
+    "boolean",
+    "is",
+    "type",
+    "typeof",
+    "if",
+    "yes",
+    "no",
+    "yesno",
+    "evaluate"
+  ]
+}

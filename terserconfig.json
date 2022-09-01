@@ -1,0 +1,9 @@
+{
+    "ecma": 2016,
+    "compress": true,
+    "mangle": true,
+    "toplevel": true,
+    "keep_classnames": true,
+    "keep_fnames": true,
+    "module": true
+}
