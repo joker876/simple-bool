@@ -32,21 +32,21 @@ export function isObject(value: any): boolean {
     return typeof value == 'object' && isDefined(value);
 }
 
+export function isArray(value: any): boolean {
+    return Array.isArray(value);
+}
+
 export function isEmpty(value: object | string): boolean {
     if (typeof value == 'string' || Array.isArray(value)) return value.length > 0;
     return Object.keys(value).length > 0;
-}
-
-export function isArray(value: any): boolean {
-    return Array.isArray(value);
 }
 
 export function isClassDeclaration(value: any): boolean {
     return typeof value === 'function' && /^\s*class\s+/.test(value.toString());
 }
 
-export function isInstanceOf(value: any, of: Function): boolean {
-    return value instanceof of;
+export function isInstanceOf(value: any, cls: Function): boolean {
+    return value instanceof cls;
 }
 
 export function isPromise(value: any): boolean {
