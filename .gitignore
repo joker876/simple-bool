@@ -1,6 +1,8 @@
 # folders
 node_modules
-dist
 
 # files
 package-lock.json
+dist/*.ts
+dist/*.spec.js
+dist/index.js
