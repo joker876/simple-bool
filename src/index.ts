@@ -5,7 +5,7 @@ isDefined(value: any): boolean
 ```
 Returns `false` if the value is `undefined` or `null`. Otherwise returns `true`.
  */
-export function isDefined(value: any): boolean {
+export function isDefined<Defined extends {}>(value: any): value is Defined {
     return value !== undefined && value !== null;
 }
 /**
@@ -14,7 +14,7 @@ isNull(value: any): boolean
 ```
 Returns `true` if the value is `null`. Otherwise returns `false`.
  */
-export function isNull(value: any): boolean {
+export function isNull(value: any): value is null {
     return value === null;
 }
 
@@ -26,7 +26,7 @@ Returns `true` if the value is of any of those types: `number` , `string` , `boo
 
 Otherwise returns `false`.
  */
-export function isPrimitive(value: any): boolean {
+export function isPrimitive(value: any): value is Primitive {
     return (
         typeof value == 'number' ||
         typeof value == 'string' ||
@@ -36,6 +36,7 @@ export function isPrimitive(value: any): boolean {
         typeof value == 'bigint'
     );
 }
+export type Primitive = number | string | boolean | undefined | null | symbol | bigint;
 
 /**
 ```typescript
@@ -43,7 +44,7 @@ isBoolean(value: any): boolean
 ```
 Returns `true` if the value is `true` or `false`. Otherwise returns `false`.
  */
-export function isBoolean(value: any): boolean {
+export function isBoolean(value: any): value is boolean {
     return typeof value == 'boolean';
 }
 /**
@@ -52,7 +53,7 @@ isString(value: any): boolean
 ```
 Returns `true` if the value is of type `string`, and is not an empty string. Otherwise returns `false`.
  */
-export function isString(value: any): boolean {
+export function isString(value: any): value is string {
     return typeof value == 'string' && value.length > 0;
 }
 /**
@@ -61,7 +62,7 @@ isNumber(value: any): boolean
 ```
 Returns `true` if the value is of type `number`, and is not a `NaN`. Otherwise returns `false`.
  */
-export function isNumber(value: any): boolean {
+export function isNumber(value: any): value is number {
     return typeof value == 'number' && !isNaN(value);
 }
 /**
@@ -70,7 +71,7 @@ isInt(value: any): boolean
 ```
 Returns `true` if the value is a number, and it **doesn't** have any decimal places. Otherwise returns `false`.
  */
-export function isInt(value: any): boolean {
+export function isInt(value: any): value is number {
     return isNumber(value) && value % 1 == 0;
 }
 /**
@@ -79,7 +80,7 @@ isFloat(value: any): boolean
 ```
 Returns `true` if the value is a number, and it **does** have some decimal places. Otherwise returns `false`.
  */
-export function isFloat(value: any): boolean {
+export function isFloat(value: any): value is number {
     return isNumber(value) && value % 1 != 0;
 }
 /**
@@ -88,16 +89,17 @@ isObject(value: any): boolean
 ```
 Returns `true` if the value is of type `object`, and [is defined](#isdefined). Otherwise returns `false`.
  */
-export function isObject(value: any): boolean {
+export function isObject(value: any): value is AnyObject {
     return typeof value == 'object' && isDefined(value);
 }
+export type AnyObject = { [key: PropertyKey]: any }
 /**
 ```typescript
 isArray(value: any): boolean
 ```
 Returns `true` if the value is an array. Otherwise returns `false`.
  */
-export function isArray(value: any): boolean {
+export function isArray<T>(value: any): value is T[] {
     return Array.isArray(value);
 }
 /**
@@ -111,7 +113,7 @@ Returns `true` if:
 
 Otherwise returns `false`.
  */
-export function isEmpty(value: object | string): boolean {
+export function isEmpty(value: object | string): value is '' | [] | { [key: PropertyKey]: undefined } {
     if (typeof value == 'string' || Array.isArray(value)) return value.length == 0;
     if (value.constructor.name !== 'Object') return false;
     return Object.keys(value).length == 0;
@@ -142,7 +144,7 @@ isInstanceOf(value: any, cls: Function): boolean
 ```
 Returns `true` if the value is an instance of the class *cls*. Otherwise returns `false`.
  */
-export function isInstanceOf(value: any, cls: Function): boolean {
+export function isInstanceOf<T extends Function>(value: any, cls: T): value is T {
     return value instanceof cls;
 }
 /**
@@ -151,7 +153,7 @@ isPromise(value: any): boolean
 ```
 Returns `true` if the value is a Promise. Otherwise returns `false`.
  */
-export function isPromise(value: any): boolean {
+export function isPromise<T>(value: any): value is Promise<T> {
     return value instanceof Promise;
 }
 /**
@@ -162,7 +164,7 @@ Returns `true` if the value [is an instance of](#isinctanceof) Function. Otherwi
 
 All standard functions, arrow functions, classes, constructors, etc. count towards being a Function.
  */
-export function isFunction(value: any): boolean {
+export function isFunction(value: any): value is Function {
     return value instanceof Function;
 }
 /**
@@ -171,7 +173,7 @@ isRegExp(value: any): boolean
 ```
 Returns `true` if the value is a regular expression. Otherwise returns `false`.
  */
-export function isRegExp(value: any): boolean {
+export function isRegExp(value: any): value is RegExp {
     return value instanceof RegExp;
 }
 /**
@@ -182,7 +184,7 @@ Returns `true` if the value is [is an instance of](#isinctanceof) Date, or can b
 
 All numbers return `true` when passed into `isDate`.
  */
-export function isDate(value: any): boolean {
+export function isDate(value: any): value is Date {
     return !isNaN(new Date(value).valueOf());
 }
 /**
