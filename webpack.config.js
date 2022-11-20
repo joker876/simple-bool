@@ -5,7 +5,7 @@ module.exports = {
     mode: 'production',
     output: {
         filename: 'simple-bool.min.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist/browser'),
         library: 'SimpleBool',
         libraryTarget: 'umd',
         umdNamedDefine: true,

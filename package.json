@@ -11,7 +11,8 @@
     "test": "npm run build && npx jasmine",
     "start": "ts-node-dev --respawn src/index.ts",
     "build": "rmdir /s /Q dist & tsc",
-    "build-web": "npm run build && npm exec webpack"
+    "build-web": "npm run build && npm exec webpack",
+    "deploy": "gh-pages -d dist/browser"
   },
   "repository": {
     "type": "git",
