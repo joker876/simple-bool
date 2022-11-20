@@ -9,8 +9,21 @@ A simple set of functions that return a boolean.
 * Very lightweight!
 
 ## Installation
+### NodeJS
 ```
 npm install simple-bool --save
+```
+
+### Browser
+Import the script:
+```html
+<script src="https://joker876.github.io/simple-bool/simple-bool.min.js">
+```
+And import the functions from a global object:
+```js
+SimpleBool.isDefined();
+// or
+const { isDefined, isNumber, ... } = SimpleBool;
 ```
 
 ## Usage
