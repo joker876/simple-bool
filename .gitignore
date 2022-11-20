@@ -4,6 +4,3 @@ dist
 
 # files
 package-lock.json
-dist/*.ts
-dist/*.spec.js
-dist/index.js
