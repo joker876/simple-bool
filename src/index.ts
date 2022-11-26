@@ -54,6 +54,15 @@ export function isBoolean(value: any): value is boolean {
 ```typescript
 isString(value: any): boolean
 ```
+Returns `true` if the value is of type `string`. Otherwise returns `false`.
+ */
+export function isAnyString(value: any): value is string {
+    return typeof value == 'string';
+}
+/**
+```typescript
+isString(value: any): boolean
+```
 Returns `true` if the value is of type `string`, and is not an empty string. Otherwise returns `false`.
  */
 export function isString(value: any): value is string {

@@ -53,6 +53,12 @@ isBoolean(value: any): boolean
 ```
 Returns `true` if the value is `true` or `false`. Otherwise returns `false`.
 
+#### isAnyString
+```typescript
+isAnyString(value: any): boolean
+```
+Returns `true` if the value is of type `string`. Otherwise returns `false`.
+
 #### isString
 ```typescript
 isString(value: any): boolean
