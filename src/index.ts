@@ -5,9 +5,11 @@ isDefined(value: any): boolean
 ```
 Returns `false` if the value is `undefined` or `null`. Otherwise returns `true`.
  */
-export function isDefined<Defined extends {}>(value: any): value is Defined {
+export function isDefined(value: any): value is Defined {
     return value !== undefined && value !== null;
 }
+type Defined = {};
+
 /**
 ```typescript
 isNull(value: any): boolean
@@ -30,10 +32,11 @@ export function isPrimitive(value: any): value is Primitive {
     return (
         typeof value == 'number' ||
         typeof value == 'string' ||
-        typeof value == 'boolean' ||
-        !isDefined(value) ||
+        typeof value == 'boolean'||
         typeof value == 'symbol' ||
-        typeof value == 'bigint'
+        typeof value == 'bigint' ||
+        value === undefined      ||
+        value === null
     );
 }
 export type Primitive = number | string | boolean | undefined | null | symbol | bigint;
