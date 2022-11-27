@@ -1,4 +1,4 @@
-import { isBoolean, isDefined, isNull, isPrimitive, isString, isNumber, isInt, isFloat, isObject, isArray, isEmpty, isClassDeclaration, isInstanceOf, isPromise, isFunction, isRegExp, isDate, hasProp, evaluate, all, most, any, none, some } from './index';
+import { isBoolean, isDefined, isNull, isPrimitive, isString, isNumber, isInt, isFloat, isObject, isArray, isEmpty, isClassDeclaration, isInstanceOf, isPromise, isFunction, isRegExp, isDate, hasProp, evaluate, all, most, any, none, some, isAnyString } from './index.js';
 
 describe('isDefined', () => {
     it('should be defined', () => {
@@ -138,6 +138,41 @@ describe('isBoolean', () => {
             Symbol('foo'),
             class {},
         ].forEach(v => expect(isBoolean(v)).toBeFalse());
+    });
+});
+describe('isAnyString', () => {
+    it('should be defined', () => {
+        expect(isAnyString).toBeTruthy();
+        expect(isAnyString).toBeInstanceOf(Function);
+    });
+    it('should return true when passed a string (including empty string)', () => {
+        [
+            'foo',
+            '',
+        ].forEach(v => expect(isAnyString(v)).toBeTrue());
+    });
+    it('should return false when passed anything else', () => {
+        [
+            null,
+            undefined,
+            true,
+            false,
+            1,
+            0,
+            -20,
+            4.56,
+            [],
+            [null],
+            ['abc', 9, undefined],
+            {},
+            { id: 4 },
+            () => {},
+            Math.min,
+            Date,
+            /^.c+$/g,
+            Symbol('foo'),
+            class {},
+        ].forEach(v => expect(isString(v)).toBeFalse());
     });
 });
 describe('isString', () => {
