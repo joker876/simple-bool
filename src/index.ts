@@ -8,7 +8,7 @@ Returns `false` if the value is `undefined` or `null`. Otherwise returns `true`.
 export function isDefined(value: any): value is Defined {
     return value !== undefined && value !== null;
 }
-type Defined = {};
+type Defined = {} | { [key: PropertyKey]: any };
 
 /**
 ```typescript
