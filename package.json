@@ -13,6 +13,7 @@
     "start": "ts-node-dev --respawn src/index.ts",
     "build": "rmdir /s /Q dist & tsc",
     "build-web": "npm run build && npm exec webpack",
+    "npm-publish": "npm run build && npm publish",
     "deploy": "gh-pages -d dist/browser"
   },
   "repository": {
