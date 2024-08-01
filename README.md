@@ -5,7 +5,7 @@ A simple set of functions that return a boolean.
 ## Highlights
 * Supports TypeScript!
 * Supports Node and browser
-* Includes full JSX documentation
+* Includes full JSDoc documentation
 * Very lightweight!
 
 ## Installation
