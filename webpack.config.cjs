@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './dist/index.js',
+    entry: './dist/esm/index.js',
     mode: 'production',
     output: {
         filename: 'simple-bool.min.js',

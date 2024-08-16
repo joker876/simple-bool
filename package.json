@@ -2,17 +2,21 @@
   "name": "simple-bool",
   "version": "3.0.2",
   "description": "A simple set of functions that return a boolean.",
-  "main": "dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "type": "module",
   "files": [
     "dist/*"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "test": "npm run build && npx jasmine",
     "start": "ts-node-dev --respawn src/index.ts",
-    "build": "rmdir /s /Q dist & tsc",
-    "build-web": "npm run build && npm exec webpack",
+    "clean": "rmdir /s /Q dist",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build:web": "npm run clean && tsc --project tsconfig.esm.json && npm exec webpack",
     "npm-publish": "npm run build && npm publish",
     "deploy": "gh-pages -d dist/browser"
   },
