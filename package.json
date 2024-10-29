@@ -7,10 +7,10 @@
   ],
   "exports": {
     ".": {
-      "types": "./build/types/lib.d.ts",
-      "require": "./build/cjs/lib.js",
-      "import": "./build/esm/lib.js",
-      "default": "./build/esm/lib.js"
+      "types": "./build/types/index.d.ts",
+      "require": "./build/cjs/index.js",
+      "import": "./build/esm/index.js",
+      "default": "./build/esm/index.js"
     }
   },
   "scripts": {
