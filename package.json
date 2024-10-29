@@ -2,13 +2,22 @@
   "name": "simple-bool",
   "version": "3.1.0",
   "description": "A simple set of functions that return a boolean.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
   "type": "module",
   "files": [
-    "dist/*"
+    "/dist"
   ],
+  "exports": {
+    ".": {
+      "require": {
+        "default": "./dist/cjs/index.js",
+        "types": "./dist/cjs/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/esm/index.js",
+        "types": "./dist/esm/index.d.ts"
+      }
+    }
+  },
   "scripts": {
     "test": "npm run build && npx jasmine",
     "start": "ts-node-dev --respawn src/index.ts",
