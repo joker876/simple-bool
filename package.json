@@ -2,27 +2,22 @@
   "name": "simple-bool",
   "version": "3.2.0-0",
   "description": "A simple set of functions that return a boolean.",
-  "type": "module",
   "files": [
     "/dist"
   ],
   "exports": {
     ".": {
-      "require": {
-        "default": "./dist/cjs/index.js",
-        "types": "./dist/cjs/index.d.ts"
-      },
-      "import": {
-        "default": "./dist/esm/index.js",
-        "types": "./dist/esm/index.d.ts"
-      }
+      "types": "./build/types/lib.d.ts",
+      "require": "./build/cjs/lib.js",
+      "import": "./build/esm/lib.js",
+      "default": "./build/esm/lib.js"
     }
   },
   "scripts": {
     "test": "npm run build && npx jasmine",
     "start": "ts-node-dev --respawn src/index.ts",
     "clean": "rmdir /s /Q dist",
-    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build": "npm run clean && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json && node ./scripts/prepare-package-json.js",
     "build:cjs": "tsc --project tsconfig.cjs.json",
     "build:esm": "tsc --project tsconfig.esm.json",
     "build:web": "npm run clean && tsc --project tsconfig.esm.json && npm exec webpack",
